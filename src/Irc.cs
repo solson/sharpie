@@ -21,16 +21,13 @@ namespace Sharpie {
         public string Realname { get; private set; }
         public string[] Channels { get; private set; }
 
-        public Irc(string server, int port, string nickname, string username,
-                string realname, string[] channels) {
-            Server = server;
-            Port = port;
-
-            Nickname = nickname;
-            Username = username;
-            Realname = realname;
-
-            Channels = channels;
+        public Irc(IrcConfig config) {
+            Server = config.Server;
+            Port = config.Port;
+            Nickname = config.Nickname;
+            Username = config.Username;
+            Realname = config.Realname;
+            Channels = config.Channels;
 
             handlers = new Dictionary<string, CommandHandler>();
 

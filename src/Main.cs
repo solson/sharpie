@@ -8,12 +8,18 @@ class MainClass {
             return 1;
         }
 
-        string server = args[0];
-        string channel = args[1];
-        const string nick = "sharpie";
+        var irc = new Irc(new IrcConfig() {
+            Server = args[0],
+            Nickname = "sharpie",
+            Channels = new string[] { args[1] }
+        });
 
-        var irc = new Irc(server, 6667, nick, nick, nick,
-                new string[] { channel });
+        irc.OnChannelMessage((sender, channel, message) => {
+            if(message.StartsWith(irc.Nickname + ": ")) {
+                irc.SendMessage(channel, "{0}: {1}", sender.Nickname,
+                        message.Substring(irc.Nickname.Length + 2));
+            }
+        });
 
         irc.Run();
 
