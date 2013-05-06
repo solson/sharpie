@@ -31,7 +31,7 @@ namespace Sharpie {
             string nick = sender.Substring(0, endNick);
             sender = sender.Substring(endNick + 1);
 
-            // Find the end of the username;
+            // Find the end of the username.
             int endUser = sender.IndexOf('@');
 
             if(endUser == -1) {
