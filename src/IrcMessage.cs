@@ -3,28 +3,28 @@ using System.Collections.Generic;
 
 namespace Sharpie {
     public class IrcMessage {
-        public string Prefix { get; private set; }
+        public string Sender { get; private set; }
         public string Command { get; private set; }
         public List<string> Arguments { get; private set; }
 
-        public IrcMessage(string prefix, string command, List<string> args) {
-            Prefix = prefix;
+        public IrcMessage(string sender, string command, List<string> args) {
+            Sender = sender;
             Command = command;
             Arguments = args;
         }
 
         public static IrcMessage Parse(string line) {
-            string prefix = null;
+            string sender = null;
 
-            // Check for a prefix.
+            // Check for a sender.
             if(line.StartsWith(":")) {
-                int endPrefix = line.IndexOf(" ");
+                int endSender = line.IndexOf(" ");
 
-                if(endPrefix == -1)
+                if(endSender == -1)
                     throw new ArgumentException("Invalid IRC message");
 
-                prefix = line.Substring(1, endPrefix - 1);
-                line = line.Substring(endPrefix + 1);
+                sender = line.Substring(1, endSender - 1);
+                line = line.Substring(endSender + 1);
             }
 
             // Parse the command name or numeric.
@@ -63,7 +63,7 @@ namespace Sharpie {
                 }
             }
 
-            return new IrcMessage(prefix, command, args);
+            return new IrcMessage(sender, command, args);
         }
     }
 }
