@@ -3,12 +3,17 @@
 Sharpie is a C# IRC bot. Just for fun.
 
 
-## Building
+## Depdendencies
+
+So far this has only been tested on Mono. It should work on .NET, though.
+
+
+## Building on Mono
 
 Just run `make`.
 
 
-## Running
+## Running on Mono
 
 Run `mono sharpie.exe irc.example.net '#channel'`.
 
