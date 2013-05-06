@@ -18,7 +18,7 @@ namespace Sharpie {
 
             // Check for a sender.
             if(line.StartsWith(":")) {
-                int endSender = line.IndexOf(" ");
+                int endSender = line.IndexOf(' ');
 
                 if(endSender == -1)
                     throw new ArgumentException("Invalid IRC message");
@@ -30,7 +30,7 @@ namespace Sharpie {
             // Parse the command name or numeric.
             string command;
 
-            int endCommand = line.IndexOf(" ");
+            int endCommand = line.IndexOf(' ');
 
             if(endCommand == -1) {
                 command = line;
@@ -51,7 +51,7 @@ namespace Sharpie {
                     args.Add(line.Substring(1));
                     line = null;
                 } else {
-                    int endArg = line.IndexOf(" ");
+                    int endArg = line.IndexOf(' ');
 
                     if(endArg == -1) {
                         args.Add(line);
