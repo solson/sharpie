@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Collections.Generic;
 
 namespace Sharpie {
-    public class Irc {
+    public partial class Irc {
         private TcpClient tcp;
         private StreamReader reader;
         private StreamWriter writer;
