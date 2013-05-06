@@ -102,12 +102,10 @@ namespace Sharpie {
         }
 
         private void Disconnect() {
-            try {
-                if(tcp != null)
-                    ((IDisposable)tcp).Dispose();
-            } finally {
-                Connected = false;
-            }
+            Connected = false;
+
+            if(tcp != null)
+                ((IDisposable)tcp).Dispose();
         }
 
         private void Register() {
