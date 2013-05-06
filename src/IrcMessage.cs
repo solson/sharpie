@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Sharpie {
     public class IrcMessage {
-        public string Sender { get; private set; }
+        public Sender Sender { get; private set; }
         public string Command { get; private set; }
         public List<string> Arguments { get; private set; }
 
-        public IrcMessage(string sender, string command, List<string> args) {
+        public IrcMessage(Sender sender, string command, List<string> args) {
             Sender = sender;
             Command = command;
             Arguments = args;
         }
 
         public static IrcMessage Parse(string line) {
-            string sender = null;
+            Sender sender = null;
 
             // Check for a sender.
             if(line.StartsWith(":")) {
@@ -23,7 +23,7 @@ namespace Sharpie {
                 if(endSender == -1)
                     throw new ArgumentException("Invalid IRC message");
 
-                sender = line.Substring(1, endSender - 1);
+                sender = Sender.Parse(line.Substring(1, endSender - 1));
                 line = line.Substring(endSender + 1);
             }
 
