@@ -20,7 +20,7 @@ Run `mono sharpie.exe irc.example.net '#channel'`.
 
 ## License
 
-Copyright (c) 2013, Scott Olson \<scott@scott-olson.org>
+Copyright (c) 2013, Scott Olson \<scott@solson.me>
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
